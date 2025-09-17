@@ -6,20 +6,20 @@
 
             <!-- 닫기 버튼 -->
             <button @click="close"
-                class="absolute top-2 right-2 text-white text-2xl hover:text-gray-300 bg-black50 rounded-full w-10 h-10 flex items-center justify-center">
-                ×
+                class="absolute top-2 right-2 text-white text-2xl hover:text-gray-300 bg-black/50 rounded-full w-10 h-10 flex items-center justify-center">
+                <Icon icon="mdi:close" />
             </button>
 
             <!-- 이전 버튼 -->
             <button v-if="hasPrevious" @click="previous"
                 class="absolute left-2 top-1/2 transform -translate-y-1/2 text-white text-2xl hover:text-gray-300 bg-black/50 rounded-full w-12 h-12 flex items-center justify-center">
-                ‹
+                <Icon icon="mdi:chevron-left" />
             </button>
 
             <!-- 다음 버튼 -->
             <button v-if="hasNext" @click="next"
                 class="absolute right-2 top-1/2 transform -translate-y-1/2 text-white text-2xl hover:text-gray-300 bg-black/50 rounded-full w-12 h-12 flex items-center justify-center">
-                ›
+                <Icon icon="mdi:chevron-right" />
             </button>
 
             <!-- 이미지 인덱스 표시 -->
@@ -32,6 +32,7 @@
 </template>
 
 <script setup lang="ts">
+import { Icon } from "@iconify/vue";
 import RippleButton from './RippleButton.vue';
 
 interface Props {

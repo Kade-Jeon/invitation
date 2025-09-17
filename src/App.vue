@@ -1,7 +1,7 @@
 <template>
   <!-- class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 text-center"> -->
   <div class="min-h-screen bg-[#F6F1F1] text-center">
-    <div class="h-[200px] flex items-center justify-center">
+    <div class="h-[300px] flex items-center justify-center">
       <div class="text-center items-center mx-2">
         <h1 class="text-white text-4xl font-bold">
           <TextHighlight :text="words" :delay="0.1"
@@ -9,9 +9,12 @@
             2025년 11월 26일
           </TextHighlight>
         </h1>
-        <h1 class="text-[#A3CCDA] text-4xl font-bold mt-2">
+        <TextReveal class="text-4xl leading-relaxed text-center text-[#A3CCDA] font-bold mt-2">
           우리의 소중한 시작에 함께해 주시길 바랍니다.
-        </h1>
+        </TextReveal>
+        <TextReveal class="text-1xl leading-relaxed text-center text-black font-semibold font-myeongjo mt-2">
+          대한민국컨벤션센터 1층 사파이어홀 오후 1시
+        </TextReveal>
       </div>
     </div>
     <img src="/src/assets/images/main1.jpg" alt="wedding" class="w-full h-full object-cover" />
@@ -28,7 +31,7 @@
     </div>
 
 
-    <div class="mx-5 my-5">
+    <div class="mx-3 my-5">
       <SpringCalendar :calendar-data="calendarData" :initial-index="4" />
     </div>
     <div class="mx-3 my-3">
@@ -55,7 +58,7 @@ import ImageModal from "./components/ImageModal.vue";
 import TextGenerateEffect from "./components/TextGenerateEffect.vue";
 import TextHighlight from "./components/TextHighlight.vue";
 import SpringCalendar from "./components/SpringCalendar.vue";
-import SparklesExample from "./components/SparklesExample.vue";
+import TextReveal from "./components/TextReveal.vue";
 
 // BendingGallery의 기본 이미지 목록 (실제로는 BendingGallery에서 가져와야 함)
 const imageList = ref([

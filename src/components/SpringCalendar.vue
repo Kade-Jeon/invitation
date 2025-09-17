@@ -1,7 +1,7 @@
 <template>
     <MotionConfig :transition="{ duration: 0.7, type: 'spring', bounce: 0.5 }">
         <Motion layout as="div"
-            class="flex w-full max-w-lg flex-col gap-6 overflow-hidden rounded-3xl border bg-muted/50 p-8" :animate="{
+            class="flex w-full max-w-lg flex-col gap-6 overflow-hidden rounded-3xl border bg-white/50 p-8" :animate="{
                 height: calendarData[activeIndex].events ? 'auto' : 'fit',
             }">
             <!-- <TextMorph :text="calendarData[activeIndex].day" class="w-fit font-bold" :morph-time="0.5"
@@ -19,7 +19,8 @@
                 <div class="text-[#A3CCDA]  drop-shadow-lg font-bold flex items-center justify-center ">
                     <p>
                         D-
-                        <NumberTicker :value="40" :decimal-places="0" :direction="'up'" class="text-[#A3CCDA] " />
+                        <NumberTicker :value="40" :decimal-places="0" :direction="'up'" :delay="1000" :duration="2500"
+                            class="text-[#A3CCDA] " />
                     </p>
                 </div>
 
