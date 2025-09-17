@@ -1,29 +1,29 @@
 <template>
   <!-- class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 text-center"> -->
-  <div class="min-h-screen bg-[#F6F1F1] text-center">
+  <div class="min-h-screen text-center" :class="backgroundColor">
     <div class="h-[300px] flex items-center justify-center">
       <div class="text-center items-center mx-2">
         <h1 class="text-white text-4xl font-bold">
           <TextHighlight :text="words" :delay="0.1"
             class="text-white rounded-lg bg-gradient-to-r from-purple-300 to-orange-300">
-            2025년 11월 26일
+            {{ topDate }}
           </TextHighlight>
         </h1>
-        <TextReveal class="text-4xl leading-relaxed text-center text-[#A3CCDA] font-bold mt-2">
-          우리의 소중한 시작에 함께해 주시길 바랍니다.
+        <TextReveal class="text-4xl leading-relaxed text-center font-bold mt-2" :class="fontColor">
+          {{ topWord1 }}
         </TextReveal>
-        <TextReveal class="text-1xl leading-relaxed text-center text-black font-semibold font-myeongjo mt-2">
-          대한민국컨벤션센터 1층 사파이어홀 오후 1시
+        <TextReveal class="text-1xl leading-relaxed text-center font-semibold font-myeongjo mt-2" :class="fontColor2">
+          {{ topWord2 }}
         </TextReveal>
       </div>
     </div>
     <img src="/src/assets/images/main1.jpg" alt="wedding" class="w-full h-full object-cover" />
     <TextGenerateEffect :words="words" :delay="0.1"
-      class="text-black drop-shadow-lg flex items-center justify-center font-myeongjo font-thin pt-15 pb-15" />
-    <p class="text-black text-center font-myeongjo font-bold">
+      class="text-[#C97A6D] drop-shadow-lg flex items-center justify-center font-myeongjo font-thin pt-15 pb-15" />
+    <p class="text-[#5A5A5A] text-center font-myeongjo font-bold" :class="fontColor">
       {{ broom }}
     </p>
-    <p class="text-black text-center font-myeongjo font-bold">
+    <p class="text-[#5A5A5A] text-center font-myeongjo font-bold" :class="fontColor">
       {{ bride }}
     </p>
     <div class="h-96 sm:h-[500px] md:h-[500px] lg:h-[500px]">
@@ -36,11 +36,11 @@
     </div>
     <div class="mx-3 my-3">
       <img src="/src/assets/images/map.webp" alt="wedding" class="w-full h-full object-cover rounded-lg" />
-      <p class="text-black text-center font-myeongjo">
-        대한민국 어딘가.. 찾아와 보세요.
+      <p class="text-[#5A5A5A] text-center font-myeongjo" :class="fontColor">
+        {{ mapText }}
       </p>
-      <p class="text-black text-center font-myeongjo">
-        사파이어 홀
+      <p class="text-[#5A5A5A] text-center font-myeongjo" :class="fontColor">
+        {{ mapText2 }}
       </p>
     </div>
     <!-- 이미지 모달 -->
@@ -145,6 +145,10 @@ onUnmounted(() => {
   window.removeEventListener('keydown', handleKeydown);
 });
 
+const topDate = ref(`2025년 11월 26일`)
+const topWord1 = ref(`우리의 소중한 시작에 함께해 주시길 바랍니다.`)
+const topWord2 = ref(`대한민국컨벤션센터 1층 사파이어홀 오후 1시`)
+
 const words = ref(`여름 햇살 아래 처음 마주했던 순간을\n
 잊지 않고 마음에 담아왔습니다.\n
 그 따뜻한 계절의 기억처럼,\n
@@ -187,6 +191,12 @@ const calendarData = ref([
       { title: '결혼식', day: '2025-11-23', time: '11:30AM' },
     ],
   },
-
 ]);
+
+const mapText = ref(`대한민국 어딘가.. 찾아와 보세요.`)
+const mapText2 = ref(`사파이어 홀`)
+
+const backgroundColor = ref("bg-[#FFFDF7]");
+const fontColor = ref("text-[#5A5A5A]");
+const fontColor2 = ref("text-[#C97A6D]");
 </script>

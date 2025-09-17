@@ -13,18 +13,18 @@
                 <Motion as="div" class="flex items-center justify-center gap-2" layout :initial="{ x: 10, opacity: 0 }"
                     :animate="{ x: 0, opacity: 1 }">
                     <Icon icon="mdi:calendar" />
-                    <span class="font-medium">Upcoming Events</span>
+                    <span class="font-medium" :class="textColor">Upcoming Events</span>
                 </Motion>
 
                 <div class="text-[#A3CCDA]  drop-shadow-lg font-bold flex items-center justify-center ">
-                    <p>
+                    <p :class="textColor">
                         D-
-                        <NumberTicker :value="40" :decimal-places="0" :direction="'up'" :delay="1000" :duration="2500"
-                            class="text-[#A3CCDA] " />
+                        <NumberTicker :class="textColor" :value="40" :decimal-places="0" :direction="'up'" :delay="1000"
+                            :duration="2500" />
                     </p>
                 </div>
 
-                <div class="flex flex-wrap gap-4 items-center justify-center">
+                <div class="flex flex-wrap gap-4 items-center justify-center" :class="textColor">
                     <Motion v-for="event in calendarData[activeIndex].events"
                         :key="event.title + event.time + Math.random()" as="div" layout
                         class="w-full max-w-44 rounded-lg border p-3" :initial="{ x: 10, opacity: 0 }"
@@ -35,7 +35,7 @@
                 </div>
             </Motion>
 
-            <div class="flex flex-wrap gap-3 justify-center">
+            <div class="flex flex-wrap gap-3 justify-center" :class="textColor">
                 <Motion v-for="(day, index) in calendarData" :key="day.date + '-' + index" as="button" layout
                     class="flex flex-col rounded-2xl border border-border p-3 text-center duration-200 hover:bg-muted-foreground/10"
                     :class="activeIndex === index ? 'bg-muted-foreground/5 opacity-100' : 'opacity-40'"
@@ -83,6 +83,7 @@ const props = defineProps<{
 
 const activeIndex = ref(props.initialIndex ?? 0);
 
+const textColor = ref("text-[#5A5A5A]");
 // function setActive(index: number) {
 //     activeIndex.value = index;
 //     emit("update:activeIndex", index);
