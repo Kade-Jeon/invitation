@@ -23,11 +23,6 @@
             </button>
 
             <!-- 이미지 인덱스 표시 -->
-            <!-- 
-            <div
-                class="absolute bottom left-1/2 transform -translate-x-1/2 text-black text-sm bg-white/50 px-3 py-1 rounded-full">
-                {{ currentIndex + 1 }} / {{ totalImages }}
-            </div> -->
             <RippleButton @click.stop
                 class="absolute bottom left-1/2 transform -translate-x-1/2 text-gray-500 text-sm bg-white px-3 py-1 rounded-full">
                 {{ currentIndex + 1 }} / {{ totalImages }}

@@ -14,25 +14,32 @@
         </h1>
       </div>
     </div>
+    <img src="/src/assets/images/main1.jpg" alt="wedding" class="w-full h-full object-cover" />
     <TextGenerateEffect :words="words" :delay="0.1"
-      class="text-black drop-shadow-lg flex items-center justify-center font-thin" />
+      class="text-black drop-shadow-lg flex items-center justify-center font-myeongjo font-thin pt-15 pb-15" />
+    <p class="text-black text-center font-myeongjo font-bold">
+      {{ broom }}
+    </p>
+    <p class="text-black text-center font-myeongjo font-bold">
+      {{ bride }}
+    </p>
     <div class="h-96 sm:h-[500px] md:h-[500px] lg:h-[500px]">
       <BendingGallery :bend="1" @image-click="openModal" :items="imageList"></BendingGallery>
     </div>
-    <p class="text-black text-center font-myeongjo">
-      {{ broom }}
-    </p>
-    <p class="text-black text-center font-myeongjo">
-      {{ bride }}
-    </p>
-    <div class="text-[#A3CCDA]  drop-shadow-lg font-bold flex items-center justify-center h-[50px] mb-10">
-      <p>
-        D-
-        <NumberTicker :value="40" :decimal-places="0" :direction="'up'" class="text-[#A3CCDA] " />
+
+
+    <div class="mx-5 my-5">
+      <SpringCalendar :calendar-data="calendarData" :initial-index="4" />
+    </div>
+    <div class="mx-3 my-3">
+      <img src="/src/assets/images/map.webp" alt="wedding" class="w-full h-full object-cover rounded-lg" />
+      <p class="text-black text-center font-myeongjo">
+        대한민국 어딘가.. 찾아와 보세요.
+      </p>
+      <p class="text-black text-center font-myeongjo">
+        사파이어 홀
       </p>
     </div>
-    <SpringCalendar :calendar-data="calendarData" :initial-index="5" />
-
     <!-- 이미지 모달 -->
     <ImageModal :is-open="showModal" :image-url="currentImage?.image || ''" :image-text="currentImage?.text || ''"
       :current-index="currentImageIndex" :total-images="imageList.length" :has-previous="currentImageIndex > 0"
@@ -43,12 +50,12 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue';
-import NumberTicker from "./components/NumberTicker.vue";
 import BendingGallery from "./components/BendingGallery.vue";
 import ImageModal from "./components/ImageModal.vue";
 import TextGenerateEffect from "./components/TextGenerateEffect.vue";
 import TextHighlight from "./components/TextHighlight.vue";
 import SpringCalendar from "./components/SpringCalendar.vue";
+import SparklesExample from "./components/SparklesExample.vue";
 
 // BendingGallery의 기본 이미지 목록 (실제로는 BendingGallery에서 가져와야 함)
 const imageList = ref([
@@ -145,12 +152,6 @@ const broom = ref('홍길동 · 김점순 아들 홍준기')
 const bride = ref('홍길동 · 김점순 딸 홍준기')
 
 const calendarData = ref([
-  {
-    month: '11월',
-    date: 18,
-    day: '화',
-  },
-
   {
     month: '11월',
     date: 19,
