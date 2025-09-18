@@ -19,8 +19,8 @@
                 <div class="text-[#A3CCDA]  drop-shadow-lg font-bold flex items-center justify-center ">
                     <p :class="textColor">
                         D-
-                        <NumberTicker :class="textColor" :value="40" :decimal-places="0" :direction="'up'" :delay="1000"
-                            :duration="2500" />
+                        <NumberTicker :class="textColor" :value="daysLeft" :decimal-places="0" :direction="'up'"
+                            :delay="1000" :duration="2500" />
                     </p>
                 </div>
 
@@ -74,6 +74,7 @@ interface CalendarDay {
 
 const props = defineProps<{
     calendarData: CalendarDay[];
+    daysLeft: number;
     initialIndex?: number;
 }>();
 

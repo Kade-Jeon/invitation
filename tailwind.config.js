@@ -17,6 +17,11 @@ export default {
         'sans': ['Noto Sans KR', 'sans-serif'],
         'serif': ['Nanum Myeongjo', 'serif'],
         'myeongjo': ['Nanum Myeongjo', 'serif'],
+        'songmyung': ['Song Myung', 'serif'],
+        'gowundodum': ['Gowun Dodum', 'sans-serif'],
+        'chiron-goround-tc': ['Chiron GoRound TC', 'sans-serif'],
+        'ibm-plex-sans-kr': ['IBM Plex Sans KR', 'sans-serif'],
+        'nanum-gothic': ['Nanum Gothic', 'sans-serif'],
       },
       fontWeight: {
         'thin': '100',

@@ -9,21 +9,22 @@
             {{ topDate }}
           </TextHighlight>
         </h1>
-        <TextReveal class="text-4xl leading-relaxed text-center font-bold mt-2" :class="fontColor">
+        <TextReveal class="text-4xl leading-relaxed text-center font-chiron-goround-tc font-bold mt-2"
+          :class="fontColor">
           {{ topWord1 }}
         </TextReveal>
-        <TextReveal class="text-1xl leading-relaxed text-center font-semibold font-myeongjo mt-2" :class="fontColor2">
+        <TextReveal class="text-1xl leading-relaxed text-center font-semibold font-gowundodum mt-2" :class="fontColor2">
           {{ topWord2 }}
         </TextReveal>
       </div>
     </div>
     <img src="/src/assets/images/main1.jpg" alt="wedding" class="w-full h-full object-cover" />
     <TextGenerateEffect :words="words" :delay="0.1"
-      class="text-[#C97A6D] drop-shadow-lg flex items-center justify-center font-myeongjo font-thin pt-15 pb-15" />
-    <p class="text-[#5A5A5A] text-center font-myeongjo font-bold" :class="fontColor">
+      class="text-[#C97A6D] drop-shadow-lg flex items-center justify-center font-gowundodum font-thin pt-15 pb-15" />
+    <p class="text-[#5A5A5A] text-center font-gowundodum font-bold" :class="fontColor">
       {{ broom }}
     </p>
-    <p class="text-[#5A5A5A] text-center font-myeongjo font-bold" :class="fontColor">
+    <p class="text-[#5A5A5A] text-center font-gowundodum font-bold" :class="fontColor">
       {{ bride }}
     </p>
     <div class="h-96 sm:h-[500px] md:h-[500px] lg:h-[500px]">
@@ -32,7 +33,7 @@
 
 
     <div class="mx-3 my-5">
-      <SpringCalendar :calendar-data="calendarData" :initial-index="4" />
+      <SpringCalendar :calendar-data="calendarData" :initial-index="4" :days-left="daysLeft" />
     </div>
     <div class="mx-3 my-3">
       <img src="/src/assets/images/map.webp" alt="wedding" class="w-full h-full object-cover rounded-lg" />
@@ -43,12 +44,16 @@
         {{ mapText2 }}
       </p>
     </div>
+
+    <Notification name="홍준기" description="농협 111-111-1111" time="신랑" icon="mdi:tie" color="#3B6790" class="my-1" />
+    <Notification name="홍준기" description="농협 111-111-1111" time="신부" icon="mdi:bow-tie" color="#C890A7" class="my-1" />
     <!-- 이미지 모달 -->
     <ImageModal :is-open="showModal" :image-url="currentImage?.image || ''" :image-text="currentImage?.text || ''"
       :current-index="currentImageIndex" :total-images="imageList.length" :has-previous="currentImageIndex > 0"
       :has-next="currentImageIndex < imageList.length - 1" @close="closeModal" @previous="previousImage"
       @next="nextImage" />
   </div>
+  <Button :size="'default'" :variant="'default'">Click me</Button>
 </template>
 
 <script setup lang="ts">
@@ -59,6 +64,8 @@ import TextGenerateEffect from "./components/TextGenerateEffect.vue";
 import TextHighlight from "./components/TextHighlight.vue";
 import SpringCalendar from "./components/SpringCalendar.vue";
 import TextReveal from "./components/TextReveal.vue";
+import { Button } from "@/components/ui/button";
+import Notification from './components/Notification.vue';
 
 // BendingGallery의 기본 이미지 목록 (실제로는 BendingGallery에서 가져와야 함)
 const imageList = ref([
@@ -145,14 +152,14 @@ onUnmounted(() => {
   window.removeEventListener('keydown', handleKeydown);
 });
 
-const topDate = ref(`2025년 11월 26일`)
+const topDate = ref(`2025년 11월 23일`)
 const topWord1 = ref(`우리의 소중한 시작에 함께해 주시길 바랍니다.`)
 const topWord2 = ref(`대한민국컨벤션센터 1층 사파이어홀 오후 1시`)
 
-const words = ref(`여름 햇살 아래 처음 마주했던 순간을\n
-잊지 않고 마음에 담아왔습니다.\n
-그 따뜻한 계절의 기억처럼,\n
-이제 서로의 곁에서 평생을 함께하려 합니다.\n
+const words = ref(`봄 햇살 아래 처음 마주했던 순간을\n
+잊지 않고 두 손잡고 여러분 앞에 섰습니다.\n
+벚꽃이 피는 계절의 기억처럼,\n
+이제 서로의 곁에서 꽃이 되어주고자 합니다.\n
 저희의 소중한 시작에 함께해 주시길 바랍니다.`);
 
 const broom = ref('홍길동 · 김점순 아들 홍준기')
@@ -199,4 +206,18 @@ const mapText2 = ref(`사파이어 홀`)
 const backgroundColor = ref("bg-[#FFFDF7]");
 const fontColor = ref("text-[#5A5A5A]");
 const fontColor2 = ref("text-[#C97A6D]");
+
+const weddingDate = ref('2025-11-23');
+const daysLeft = computed(() => {
+  const today = new Date();
+  const targetDate = new Date(weddingDate.value);
+
+  today.setHours(0, 0, 0, 0)
+  targetDate.setHours(0, 0, 0, 0)
+
+  const timeDiff = targetDate.getTime() - today.getTime()
+  return Math.ceil(timeDiff / (1000 * 3600 * 24))
+})
+
+console.log(daysLeft.value)
 </script>
